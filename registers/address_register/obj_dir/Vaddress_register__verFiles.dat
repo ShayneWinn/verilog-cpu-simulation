@@ -1,0 +1,13 @@
+# DESCRIPTION: Verilator output: Timestamp data for --skip-identical.  Delete at will.
+C "-cc --exe --build -j address_register.v address_register_test.cpp"
+S  10137400   262287  1618693233   581857552  1618693233   581857552 "/usr/local/bin/verilator_bin"
+S      1390    28493  1618700839   209173357  1618700839   209173357 "address_register.v"
+T      6587    28599  1618700878   377341657  1618700878   377341657 "obj_dir/Vaddress_register.cpp"
+T      3605    28597  1618700878   373341640  1618700878   373341640 "obj_dir/Vaddress_register.h"
+T      1886    28601  1618700878   377341657  1618700878   377341657 "obj_dir/Vaddress_register.mk"
+T      2811    28598  1618700878   373341640  1618700878   373341640 "obj_dir/Vaddress_register__Slow.cpp"
+T       709    28594  1618700878   369341623  1618700878   369341623 "obj_dir/Vaddress_register__Syms.cpp"
+T       908    28596  1618700878   373341640  1618700878   373341640 "obj_dir/Vaddress_register__Syms.h"
+T       344    28602  1618700878   377341657  1618700878   377341657 "obj_dir/Vaddress_register__ver.d"
+T         0        0  1618700878   377341657  1618700878   377341657 "obj_dir/Vaddress_register__verFiles.dat"
+T      1632    28600  1618700878   377341657  1618700878   377341657 "obj_dir/Vaddress_register_classes.mk"
