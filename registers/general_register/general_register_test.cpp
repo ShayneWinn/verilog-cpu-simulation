@@ -14,9 +14,9 @@ int main(int argc, char** argv, char** env){
 
     bool fail = false;
     for(int i = 0; i <= 255; i++){
-        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 1;
         CuTregister->eval();
+        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 0;
         CuTregister->eval();
         if(CuTregister->data != i){
@@ -38,9 +38,9 @@ int main(int argc, char** argv, char** env){
     fail = false;
     for(int i = 0; i <= 255; i++){
         // load value
-        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 1;
         CuTregister->eval();
+        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 0;
         CuTregister->eval();
         CuTregister->transfer_bus = 0;
@@ -64,9 +64,9 @@ int main(int argc, char** argv, char** env){
     fail = false;
     for(int i = 0; i <= 255; i++){
         // load value
-        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 1;
         CuTregister->eval();
+        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 0;
         CuTregister->eval();
 
@@ -89,9 +89,9 @@ int main(int argc, char** argv, char** env){
     fail = false;
     for(int i = 0; i <= 255; i++){
         // load value
-        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 1;
         CuTregister->eval();
+        CuTregister->transfer_bus = i;
         CuTregister->i_load_transfer = 0;
         CuTregister->eval();
 

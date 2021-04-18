@@ -34,7 +34,9 @@ void Vgeneral_register::_initial__TOP__1(Vgeneral_register__Syms* __restrict vlS
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vgeneral_register::_initial__TOP__1\n"); );
     Vgeneral_register* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->data = 0U;
+    vlTOPp->general_register__DOT__unnamedblk1__DOT__temp 
+        = VL_RANDOM_I(32);
+    vlTOPp->data = (0xffU & vlTOPp->general_register__DOT__unnamedblk1__DOT__temp);
 }
 
 void Vgeneral_register::_eval_initial(Vgeneral_register__Syms* __restrict vlSymsp) {
@@ -70,4 +72,5 @@ void Vgeneral_register::_ctor_var_reset() {
     left_bus = VL_RAND_RESET_I(8);
     right_bus = VL_RAND_RESET_I(8);
     data = VL_RAND_RESET_I(8);
+    general_register__DOT__unnamedblk1__DOT__temp = VL_RAND_RESET_I(32);
 }

@@ -31,6 +31,10 @@ VL_MODULE(Vgeneral_register) {
     VL_OUT8(right_bus,7,0);
     VL_OUT8(data,7,0);
     
+    // LOCAL SIGNALS
+    // Internals; generally not touched by application code
+    IData/*31:0*/ general_register__DOT__unnamedblk1__DOT__temp;
+    
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     CData/*0:0*/ __Vclklast__TOP__i_load_transfer;

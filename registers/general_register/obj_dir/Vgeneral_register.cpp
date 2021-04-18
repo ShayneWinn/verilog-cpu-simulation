@@ -103,7 +103,7 @@ void Vgeneral_register::_eval(Vgeneral_register__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vgeneral_register::_eval\n"); );
     Vgeneral_register* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if (((IData)(vlTOPp->i_load_transfer) & (~ (IData)(vlTOPp->__Vclklast__TOP__i_load_transfer)))) {
+    if (((~ (IData)(vlTOPp->i_load_transfer)) & (IData)(vlTOPp->__Vclklast__TOP__i_load_transfer))) {
         vlTOPp->_sequent__TOP__2(vlSymsp);
     }
     vlTOPp->_settle__TOP__3(vlSymsp);
