@@ -19,15 +19,16 @@ module general_register
     );
 
     initial begin
-        data = 8'b00000000;
+        integer temp = $urandom;
+        data = temp[7:0];
     end
 
     assign  transfer_bus = i_assert_transfer ? data : 8'bzzzzzzzz;
     assign  left_bus = i_assert_left ? data : 8'bzzzzzzzz;
     assign  right_bus = i_assert_right ? data : 8'bzzzzzzzz;
 
-    always @(posedge i_load_transfer) begin
-        data <= transfer_bus;
+    always @(negedge i_load_transfer) begin
+        data = transfer_bus;
     end
     
 endmodule
