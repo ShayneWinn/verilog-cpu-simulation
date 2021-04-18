@@ -7,7 +7,7 @@ endif
 
 default:
 	@echo "-- VERILATE & BUILD --------"
-	$(VERILATOR) -cc --exe --build -j address_register.v address_register_test.cpp
+	$(VERILATOR) -cc --exe --build -j constant_register.v constant_register_test.cpp
 	@echo "-- RUN ---------------------"
-	obj_dir/Vaddress_register
+	obj_dir/Vconstant_register
 	@echo "-- DONE --------------------"

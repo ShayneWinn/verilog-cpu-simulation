@@ -34,7 +34,7 @@ void Vregister_testbench::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("register_testbench.v", 6, "",
+            VL_FATAL_MT("register_testbench.v", 7, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -59,7 +59,7 @@ void Vregister_testbench::_eval_initial_loop(Vregister_testbench__Syms* __restri
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("register_testbench.v", 6, "",
+            VL_FATAL_MT("register_testbench.v", 7, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -72,17 +72,20 @@ VL_INLINE_OPT void Vregister_testbench::_combo__TOP__2(Vregister_testbench__Syms
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_combo__TOP__2\n"); );
     Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if ((1U != (IData)(vlTOPp->i_8bit_assert_word))) {
-        if ((2U != (IData)(vlTOPp->i_8bit_assert_word))) {
-            vlTOPp->register_testbench__DOT__b_8bit_main__out__out10 
-                = vlTOPp->i_bus_in;
-        }
-    }
     vlTOPp->register_testbench__DOT__ctl_regA_load 
-        = ((1U == (IData)(vlTOPp->i_8bit_load_word)) 
+        = ((2U == (IData)(vlTOPp->i_8bit_load_word)) 
            & (IData)(vlTOPp->clk));
     vlTOPp->register_testbench__DOT__ctl_regB_load 
-        = ((2U == (IData)(vlTOPp->i_8bit_load_word)) 
+        = ((3U == (IData)(vlTOPp->i_8bit_load_word)) 
+           & (IData)(vlTOPp->clk));
+    vlTOPp->register_testbench__DOT__ctl_regC_load 
+        = ((4U == (IData)(vlTOPp->i_8bit_load_word)) 
+           & (IData)(vlTOPp->clk));
+    vlTOPp->register_testbench__DOT__ctl_regD_load 
+        = ((5U == (IData)(vlTOPp->i_8bit_load_word)) 
+           & (IData)(vlTOPp->clk));
+    vlTOPp->register_testbench__DOT__ctl_const_load 
+        = ((1U == (IData)(vlTOPp->i_8bit_load_word)) 
            & (IData)(vlTOPp->clk));
 }
 
@@ -100,67 +103,157 @@ VL_INLINE_OPT void Vregister_testbench::_sequent__TOP__5(Vregister_testbench__Sy
     vlTOPp->regB_data = vlTOPp->b_8bit_main;
 }
 
-VL_INLINE_OPT void Vregister_testbench::_multiclk__TOP__6(Vregister_testbench__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_multiclk__TOP__6\n"); );
+VL_INLINE_OPT void Vregister_testbench::_sequent__TOP__6(Vregister_testbench__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_sequent__TOP__6\n"); );
     Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->b_8bit_right = ((((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
-                                 ? (IData)(vlTOPp->regA_data)
-                                 : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
-                                           ? 0xffU : 0U)) 
-                              & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
-                                  ? 0xffU : 0U)) | 
-                             ((((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
-                                 ? (IData)(vlTOPp->regB_data)
-                                 : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
-                                           ? 0xffU : 0U)) 
-                              & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
-                                  ? 0xffU : 0U))) & 
-                            (((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
-                               ? 0xffU : 0U) | ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
-                                                 ? 0xffU
-                                                 : 0U)));
-    vlTOPp->b_8bit_left = ((((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
-                                ? (IData)(vlTOPp->regA_data)
-                                : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
-                                          ? 0xffU : 0U)) 
-                             & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
-                                 ? 0xffU : 0U)) | (
-                                                   (((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
-                                                      ? (IData)(vlTOPp->regB_data)
-                                                      : 0U) 
-                                                    & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
-                                                        ? 0xffU
-                                                        : 0U)) 
-                                                   & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
-                                                       ? 0xffU
-                                                       : 0U))) 
-                           & (((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
-                                ? 0xffU : 0U) | ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
-                                                  ? 0xffU
-                                                  : 0U)));
+    vlTOPp->regC_data = vlTOPp->b_8bit_main;
 }
 
-VL_INLINE_OPT void Vregister_testbench::_combo__TOP__7(Vregister_testbench__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_combo__TOP__7\n"); );
+VL_INLINE_OPT void Vregister_testbench::_sequent__TOP__7(Vregister_testbench__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_sequent__TOP__7\n"); );
     Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->b_8bit_main = ((((((1U == (IData)(vlTOPp->i_8bit_assert_word))
-                                ? (IData)(vlTOPp->regA_data)
-                                : 0U) & ((1U == (IData)(vlTOPp->i_8bit_assert_word))
-                                          ? 0xffU : 0U)) 
-                             & ((1U == (IData)(vlTOPp->i_8bit_assert_word))
+    vlTOPp->regD_data = vlTOPp->b_8bit_main;
+}
+
+VL_INLINE_OPT void Vregister_testbench::_sequent__TOP__8(Vregister_testbench__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_sequent__TOP__8\n"); );
+    Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->register_testbench__DOT__constant__DOT__data 
+        = vlTOPp->i_bus_in;
+}
+
+VL_INLINE_OPT void Vregister_testbench::_multiclk__TOP__9(Vregister_testbench__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_multiclk__TOP__9\n"); );
+    Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->b_8bit_right = ((((((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
+                                   ? (IData)(vlTOPp->regA_data)
+                                   : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
+                                             ? 0xffU
+                                             : 0U)) 
+                                & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
+                                    ? 0xffU : 0U)) 
+                               | ((((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
+                                     ? (IData)(vlTOPp->regB_data)
+                                     : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
+                                               ? 0xffU
+                                               : 0U)) 
+                                  & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
+                                      ? 0xffU : 0U))) 
+                              | ((((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_right)
+                                    ? (IData)(vlTOPp->regC_data)
+                                    : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_right)
+                                              ? 0xffU
+                                              : 0U)) 
+                                 & ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_right)
+                                     ? 0xffU : 0U))) 
+                             | ((((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_right)
+                                   ? (IData)(vlTOPp->regD_data)
+                                   : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_right)
+                                             ? 0xffU
+                                             : 0U)) 
+                                & ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_right)
+                                    ? 0xffU : 0U))) 
+                            & (((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_right)
+                                   ? 0xffU : 0U) | 
+                                 ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_right)
+                                   ? 0xffU : 0U)) | 
+                                ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_right)
+                                  ? 0xffU : 0U)) | 
+                               ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_right)
+                                 ? 0xffU : 0U)));
+    vlTOPp->b_8bit_left = ((((((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
+                                  ? (IData)(vlTOPp->regA_data)
+                                  : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
+                                            ? 0xffU
+                                            : 0U)) 
+                               & ((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
+                                   ? 0xffU : 0U)) | 
+                              ((((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
+                                  ? (IData)(vlTOPp->regB_data)
+                                  : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
+                                            ? 0xffU
+                                            : 0U)) 
+                               & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
+                                   ? 0xffU : 0U))) 
+                             | ((((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_left)
+                                   ? (IData)(vlTOPp->regC_data)
+                                   : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_left)
+                                             ? 0xffU
+                                             : 0U)) 
+                                & ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_left)
+                                    ? 0xffU : 0U))) 
+                            | ((((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_left)
+                                  ? (IData)(vlTOPp->regD_data)
+                                  : 0U) & ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_left)
+                                            ? 0xffU
+                                            : 0U)) 
+                               & ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_left)
+                                   ? 0xffU : 0U))) 
+                           & (((((IData)(vlTOPp->register_testbench__DOT__ctl_regA_assert_left)
+                                  ? 0xffU : 0U) | ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_left)
+                                                    ? 0xffU
+                                                    : 0U)) 
+                               | ((IData)(vlTOPp->register_testbench__DOT__ctl_regC_assert_left)
+                                   ? 0xffU : 0U)) | 
+                              ((IData)(vlTOPp->register_testbench__DOT__ctl_regD_assert_left)
+                                ? 0xffU : 0U)));
+}
+
+VL_INLINE_OPT void Vregister_testbench::_combo__TOP__10(Vregister_testbench__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vregister_testbench::_combo__TOP__10\n"); );
+    Vregister_testbench* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->b_8bit_main = (((((((((2U == (IData)(vlTOPp->i_8bit_assert_word))
+                                   ? (IData)(vlTOPp->regA_data)
+                                   : 0U) & ((2U == (IData)(vlTOPp->i_8bit_assert_word))
+                                             ? 0xffU
+                                             : 0U)) 
+                                & ((2U == (IData)(vlTOPp->i_8bit_assert_word))
+                                    ? 0xffU : 0U)) 
+                               | ((((3U == (IData)(vlTOPp->i_8bit_assert_word))
+                                     ? (IData)(vlTOPp->regB_data)
+                                     : 0U) & ((3U == (IData)(vlTOPp->i_8bit_assert_word))
+                                               ? 0xffU
+                                               : 0U)) 
+                                  & ((3U == (IData)(vlTOPp->i_8bit_assert_word))
+                                      ? 0xffU : 0U))) 
+                              | ((((4U == (IData)(vlTOPp->i_8bit_assert_word))
+                                    ? (IData)(vlTOPp->regC_data)
+                                    : 0U) & ((4U == (IData)(vlTOPp->i_8bit_assert_word))
+                                              ? 0xffU
+                                              : 0U)) 
+                                 & ((4U == (IData)(vlTOPp->i_8bit_assert_word))
+                                     ? 0xffU : 0U))) 
+                             | ((((5U == (IData)(vlTOPp->i_8bit_assert_word))
+                                   ? (IData)(vlTOPp->regD_data)
+                                   : 0U) & ((5U == (IData)(vlTOPp->i_8bit_assert_word))
+                                             ? 0xffU
+                                             : 0U)) 
+                                & ((5U == (IData)(vlTOPp->i_8bit_assert_word))
+                                    ? 0xffU : 0U))) 
+                            | ((((1U == (IData)(vlTOPp->i_8bit_assert_word))
+                                  ? (IData)(vlTOPp->register_testbench__DOT__constant__DOT__data)
+                                  : 0U) & ((1U == (IData)(vlTOPp->i_8bit_assert_word))
+                                            ? 0xffU
+                                            : 0U)) 
+                               & ((1U == (IData)(vlTOPp->i_8bit_assert_word))
+                                   ? 0xffU : 0U))) 
+                           & ((((((2U == (IData)(vlTOPp->i_8bit_assert_word))
+                                   ? 0xffU : 0U) | 
+                                 ((3U == (IData)(vlTOPp->i_8bit_assert_word))
+                                   ? 0xffU : 0U)) | 
+                                ((4U == (IData)(vlTOPp->i_8bit_assert_word))
+                                  ? 0xffU : 0U)) | 
+                               ((5U == (IData)(vlTOPp->i_8bit_assert_word))
                                  ? 0xffU : 0U)) | (
-                                                   (((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_main)
-                                                      ? (IData)(vlTOPp->regB_data)
-                                                      : 0U) 
-                                                    & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_main)
-                                                        ? 0xffU
-                                                        : 0U)) 
-                                                   & ((IData)(vlTOPp->register_testbench__DOT__ctl_regB_assert_main)
-                                                       ? 0xffU
-                                                       : 0U))) 
-                           | (IData)(vlTOPp->register_testbench__DOT__b_8bit_main__out__out10));
+                                                   (1U 
+                                                    == (IData)(vlTOPp->i_8bit_assert_word))
+                                                    ? 0xffU
+                                                    : 0U)));
 }
 
 void Vregister_testbench::_eval(Vregister_testbench__Syms* __restrict vlSymsp) {
@@ -176,18 +269,40 @@ void Vregister_testbench::_eval(Vregister_testbench__Syms* __restrict vlSymsp) {
          & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regB_load))) {
         vlTOPp->_sequent__TOP__5(vlSymsp);
     }
-    if ((((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regA_load)) 
-          & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regA_load)) 
-         | ((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regB_load)) 
-            & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regB_load)))) {
-        vlTOPp->_multiclk__TOP__6(vlSymsp);
+    if (((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regC_load)) 
+         & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regC_load))) {
+        vlTOPp->_sequent__TOP__6(vlSymsp);
     }
-    vlTOPp->_combo__TOP__7(vlSymsp);
+    if (((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regD_load)) 
+         & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regD_load))) {
+        vlTOPp->_sequent__TOP__7(vlSymsp);
+    }
+    if (((~ (IData)(vlTOPp->register_testbench__DOT__ctl_const_load)) 
+         & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_const_load))) {
+        vlTOPp->_sequent__TOP__8(vlSymsp);
+    }
+    if ((((((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regA_load)) 
+            & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regA_load)) 
+           | ((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regB_load)) 
+              & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regB_load))) 
+          | ((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regC_load)) 
+             & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regC_load))) 
+         | ((~ (IData)(vlTOPp->register_testbench__DOT__ctl_regD_load)) 
+            & (IData)(vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regD_load)))) {
+        vlTOPp->_multiclk__TOP__9(vlSymsp);
+    }
+    vlTOPp->_combo__TOP__10(vlSymsp);
     // Final
     vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regA_load 
         = vlTOPp->register_testbench__DOT__ctl_regA_load;
     vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regB_load 
         = vlTOPp->register_testbench__DOT__ctl_regB_load;
+    vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regC_load 
+        = vlTOPp->register_testbench__DOT__ctl_regC_load;
+    vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_regD_load 
+        = vlTOPp->register_testbench__DOT__ctl_regD_load;
+    vlTOPp->__Vclklast__TOP__register_testbench__DOT__ctl_const_load 
+        = vlTOPp->register_testbench__DOT__ctl_const_load;
 }
 
 VL_INLINE_OPT QData Vregister_testbench::_change_request(Vregister_testbench__Syms* __restrict vlSymsp) {

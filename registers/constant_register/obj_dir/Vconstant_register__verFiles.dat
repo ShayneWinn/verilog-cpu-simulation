@@ -1,0 +1,13 @@
+# DESCRIPTION: Verilator output: Timestamp data for --skip-identical.  Delete at will.
+C "-cc --exe --build -j constant_register.v constant_register_test.cpp"
+S  10137400   262287  1618693233   581857552  1618693233   581857552 "/usr/local/bin/verilator_bin"
+S       277    28783  1618785608   176940003  1618785608   176940003 "constant_register.v"
+T      5017    28884  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register.cpp"
+T      3303    28882  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register.h"
+T      1895    28886  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register.mk"
+T      2255    28883  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register__Slow.cpp"
+T       716    28810  1618785987    66208177  1618785987    66208177 "obj_dir/Vconstant_register__Syms.cpp"
+T       915    28877  1618785987    66208177  1618785987    66208177 "obj_dir/Vconstant_register__Syms.h"
+T       353    28887  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register__ver.d"
+T         0        0  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register__verFiles.dat"
+T      1636    28885  1618785987    70208189  1618785987    70208189 "obj_dir/Vconstant_register_classes.mk"
